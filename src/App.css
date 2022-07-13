@@ -15,3 +15,30 @@
   margin: auto;
   margin-top: 20px;
 }
+
+.modal_container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background-color: whitesmoke; 
+}
+
+.newUser-Info{
+  width: 50%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-left: 25%;
+}
+
+.newID{
+  margin-bottom: 10px;
+}
+.newPW{
+  margin-bottom: 10px;
+}
