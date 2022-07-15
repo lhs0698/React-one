@@ -9,14 +9,20 @@ import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
 import { useRef } from 'react';
 
-import Main from './Main';
+// import Main from './Main';
 
 // import Modal from 'react-modal';
 
 
 function App() {
   let [modal, setModal] = useState(false);
-
+  
+  // usestate test 
+  //let [text, setText] = useState("alta");
+  // function Change () {
+  //   setText("alta0204");
+  // }
+  // usestate test
   return (
     <div className="App">
       <Top></Top>
@@ -24,6 +30,7 @@ function App() {
       {
         modal && <Modal closeModal={setModal} />
       }
+      {/* <div onClick={Change}>{text}</div> */}
     </div>
   );
 }
@@ -73,7 +80,7 @@ function LoginInputBox({ openModal }) {
   
     if(id !== fix.id) {
       setIdWarn('wrong');
-    } else setIdWarn('');
+    } else setIdWarn('sucess');
 
     if(pw !== fix.pw) {
       setPwWarn('wrong')
@@ -81,6 +88,8 @@ function LoginInputBox({ openModal }) {
 
     if(id === fix.id && pw == fix.pw){
       setAuth(true)
+      setIdWarn("sucess");
+      setPwWarn("sucess");
     } 
   }
 
@@ -101,12 +110,10 @@ function LoginInputBox({ openModal }) {
         <Form.Control type="password" placeholder="Password" />
         <div>{pwWarn}</div>
       </FloatingLabel>
-
       <div className="d-grid gap-2" id='Login'>
         <Button variant="primary" size="lg" onClick={Logines}>로그인</Button>
         <Button variant="danger" size="lg" onClick={() => openModal(true)}>회원가입</Button>
       </div>
-
     </div>
   );
 }
