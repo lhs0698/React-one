@@ -31,6 +31,7 @@ function App() {
         modal && <Modal closeModal={setModal} />
       }
       {/* <div onClick={Change}>{text}</div> */}
+      <darkMode></darkMode>
     </div>
   );
 }
@@ -86,7 +87,7 @@ function LoginInputBox({ openModal }) {
       setPwWarn('wrong')
     } else setPwWarn('');
 
-    if(id === fix.id && pw == fix.pw){
+    if(id === fix.id && pw === fix.pw){
       setAuth(true)
       setIdWarn("sucess");
       setPwWarn("sucess");
@@ -112,7 +113,7 @@ function LoginInputBox({ openModal }) {
       </FloatingLabel>
       <div className="d-grid gap-2" id='Login'>
         <Button variant="primary" size="lg" onClick={Logines}>로그인</Button>
-        <Button variant="danger" size="lg" onClick={() => openModal(true)}>회원가입</Button>
+        <Button variant="primary" size="lg" onClick={() => openModal(true)}>회원가입</Button>
       </div>
     </div>
   );
@@ -127,6 +128,7 @@ const Modal = ({ closeModal }) => {
         <Button variant="primary" size="lg">등록</Button>
       </div>
       <Button variant="primary" size="lg" onClick={() => closeModal(false)}>나가기</Button>
+      
     </div>
   )
 }
