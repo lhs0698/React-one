@@ -133,7 +133,7 @@ const Modal = ({ closeModal }) => {
   }
   // e.target.value = input 입력값 가져오기
   function join() {
-    localStorage.setItem(JSON.stringify(newId), JSON.stringify(newPw)); 
+    // localStorage.setItem(JSON.stringify(newId), JSON.stringify(newPw)); 
     localStorage.setItem(newId, newPw);
     // localstorage 에는 문자열만 저장된다. 
     // localstorage에 객체나 배열을 저장하기 위해서는 객체를 문자열로 변환해서 저장해야 함. JSON.str 함수를 사용하여 변환하여 저장
