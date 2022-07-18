@@ -133,8 +133,14 @@ const Modal = ({ closeModal }) => {
   }
   // e.target.value = input 입력값 가져오기
   function join() {
-    localStorage.setItem(JSON.stringify(newId), JSON.stringify(newPw));
+    localStorage.setItem(JSON.stringify(newId), JSON.stringify(newPw)); 
+    localStorage.setItem(newId, newPw);
+    // localstorage 에는 문자열만 저장된다. 
+    // localstorage에 객체나 배열을 저장하기 위해서는 객체를 문자열로 변환해서 저장해야 함. JSON.str 함수를 사용하여 변환하여 저장
   }
+  // function remove() {
+  //   localStorage.removeItem(newId);
+  // }
   // localstroage에 id,pw 저장
   return (
     <div className='modal_container'>
@@ -143,6 +149,7 @@ const Modal = ({ closeModal }) => {
         <input type="password" className='newPW' placeholder='PASSWORD' onChange={newsPw} />
         <Button variant="primary" size="lg" onClick={join}>등록</Button>
       </div>
+      {/* <Button variant='primary' size='lg' onClick={remove}>삭제</Button> */}
       <Button variant="primary" size="lg" onClick={() => closeModal(false)}>나가기</Button>
       <div>
         <b>값 : {newId}</b>
