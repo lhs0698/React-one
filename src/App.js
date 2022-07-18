@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
 import { useRef } from 'react';
 
+
 // import Main from './Main';
 
 // import Modal from 'react-modal';
@@ -16,13 +17,13 @@ import { useRef } from 'react';
 
 function App() {
   let [modal, setModal] = useState(false);
-  
   // usestate test 
   //let [text, setText] = useState("alta");
   // function Change () {
   //   setText("alta0204");
   // }
   // usestate test
+
   return (
     <div className="App">
       <Top></Top>
@@ -31,7 +32,6 @@ function App() {
         modal && <Modal closeModal={setModal} />
       }
       {/* <div onClick={Change}>{text}</div> */}
-      <darkMode></darkMode>
     </div>
   );
 }
@@ -75,35 +75,35 @@ function LoginInputBox({ openModal }) {
 
   function Logines() {
     let fix = {
-      id : 'alta',
-      pw : "0204"
+      id: 'alta',
+      pw: "0204"
     };
-  
-    if(id !== fix.id) {
+
+    if (id !== fix.id) {
       setIdWarn('wrong');
     } else setIdWarn('sucess');
 
-    if(pw !== fix.pw) {
+    if (pw !== fix.pw) {
       setPwWarn('wrong')
     } else setPwWarn('');
 
-    if(id === fix.id && pw === fix.pw){
+    if (id === fix.id && pw === fix.pw) {
       setAuth(true)
       setIdWarn("sucess");
       setPwWarn("sucess");
-    } 
+    }
   }
 
   return (
     // input, button
     <div className='inputWrap'>
       <FloatingLabel controlId="floatingInput" label="ID" className="mb-2" id='idValue' >
-        <Form.Control 
-          type="text" 
+        <Form.Control
+          type="text"
           onChange={(event) => {
             idHandler(event)
-          }} 
-          placeholder="ID" 
+          }}
+          placeholder="ID"
         />
         <div>{idWarn}</div>
       </FloatingLabel>
@@ -118,17 +118,35 @@ function LoginInputBox({ openModal }) {
     </div>
   );
 }
-
+// modal 회원 가입 창
 const Modal = ({ closeModal }) => {
+
+  const [newId, setNewId] = useState("");
+  const [newPw, setNewPw] = useState("");
+
+  function newsId (e) {
+    setNewId(e.target.value);
+  };
+  
+  function newsPw (e) {
+    setNewPw(e.target.value);
+  }
+  // e.target.value = input 입력값 가져오기
+  function join() {
+    localStorage.setItem(JSON.stringify(newId), JSON.stringify(newPw));
+  }
+  // localstroage에 id,pw 저장
   return (
     <div className='modal_container'>
       <div className='newUser-Info'>
-        <input type="text" className='newID' placeholder='ID' />
-        <input type="password" className='newPW' placeholder='PASSWORD' />
-        <Button variant="primary" size="lg">등록</Button>
+        <input type="text" className='newID' placeholder='ID' onChange={newsId} />
+        <input type="password" className='newPW' placeholder='PASSWORD' onChange={newsPw} />
+        <Button variant="primary" size="lg" onClick={join}>등록</Button>
       </div>
       <Button variant="primary" size="lg" onClick={() => closeModal(false)}>나가기</Button>
-      
+      <div>
+        <b>값 : {newId}</b>
+      </div>
     </div>
   )
 }
